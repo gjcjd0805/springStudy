@@ -1,15 +1,18 @@
 package kr.co.heo.hello.order;
 
 import kr.co.heo.hello.discount.DiscountPolicy;
-import kr.co.heo.hello.discount.FixDiscountPolicy;
 import kr.co.heo.hello.member.Member;
 import kr.co.heo.hello.member.MemberRepository;
-import kr.co.heo.hello.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
