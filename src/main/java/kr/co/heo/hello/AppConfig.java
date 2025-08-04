@@ -9,10 +9,12 @@ import kr.co.heo.hello.member.MemberServiceImpl;
 import kr.co.heo.hello.member.MemoryMemberRepository;
 import kr.co.heo.hello.order.OrderService;
 import kr.co.heo.hello.order.OrderServiceImpl;
+import kr.co.heo.hello.point.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class AppConfig {
 
     @Bean
@@ -39,5 +41,22 @@ public class AppConfig {
     @Bean
     public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
+    }
+
+    @Bean
+    public PointUse pointUse(){
+        return new PointUseImpl();
+    }
+
+    @Bean
+    public PointGet pointGet(){
+        return new PointGetImpl();
+    }
+
+    public Point point(){
+        return new PointImpl(
+                pointUse(),
+                pointGet()
+        );
     }
 }

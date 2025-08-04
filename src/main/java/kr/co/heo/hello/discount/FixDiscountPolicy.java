@@ -2,7 +2,9 @@ package kr.co.heo.hello.discount;
 
 import kr.co.heo.hello.member.Grade;
 import kr.co.heo.hello.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy{
 
     private int discountFixAmount = 1000;

@@ -5,6 +5,9 @@ import kr.co.heo.hello.member.Member;
 import kr.co.heo.hello.member.MemberService;
 import kr.co.heo.hello.order.Order;
 import kr.co.heo.hello.order.OrderService;
+import kr.co.heo.hello.point.Point;
+import kr.co.heo.hello.point.PointGetImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class OrderApp {
 
@@ -13,6 +16,10 @@ public class OrderApp {
         AppConfig appConfig = new AppConfig();
         MemberService memberService = appConfig.memberService();
         OrderService orderService = appConfig.orderService();
+
+
+
+
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
